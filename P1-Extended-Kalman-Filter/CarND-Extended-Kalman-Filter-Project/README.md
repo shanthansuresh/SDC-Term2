@@ -6,22 +6,22 @@ Self-Driving Car Engineer Nanodegree Program
 ## Results
 This code was compiled and run on 3 data files located in data folder. Following are the RMSE values
 * sample-laser-radar-measurement-data-1.txt
-RMSE(px) = 0.0651649
-RMSE(py) = 0.0605378 
-RMSE(vx) = 0.54319 
-RMSE(vy) = 0.544191
+1. RMSE(px) = 0.0651649
+2. RMSE(py) = 0.0605378 
+3. RMSE(vx) = 0.54319 
+4. RMSE(vy) = 0.544191
 
 * sample-laser-radar-measurement-data-2.txt
-RMSE(px) = 0.185496 
-RMSE(py) = 0.190302   
-RMSE(vx) = 0.476754   
-RMSE(vy) = 0.804469   
+1. RMSE(px) = 0.185496 
+2. RMSE(py) = 0.190302   
+3. RMSE(vx) = 0.476754   
+4. RMSE(vy) = 0.804469   
 
 * obj_pose-laser-radar-synthetic-input.txt
-RMSE(px) = 0.0972414  
-RMSE(py) = 0.0859948 
-RMSE(vx) = 0.450821 
-RMSE(vy) = 0.442915
+1. RMSE(px) = 0.0972414  
+2. RMSE(py) = 0.0859948 
+3. RMSE(vx) = 0.450821 
+4. RMSE(vy) = 0.442915
 
 
 ## Dependencies

@@ -4,36 +4,30 @@ Self-Driving Car Engineer Nanodegree Program
 ---
 
 ## Results
-Markdown | Less | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-1 | 2 | 3
-
 This code was compiled and run on 3 data files located in data folder. Following are the results
 * sample-laser-radar-measurement-data-1.txt
-| state   | RMSE       |
-| ------- |------------|
-| px      | 0.0651649  |
-| py      | 0.0605378  |
-| vx      | 0.54319    |
-| vy      | 0.544191   |
+state | RMSE 
+--- | --- 
+px | 0.0651649
+py | 0.0605378 
+vx | 0.54319 
+vy | 0.544191
 
 * sample-laser-radar-measurement-data-2.txt
-| state   | RMSE       |
-| ------- |------------|
-| px      | 0.185496   |
-| py      | 0.190302   |
-| vx      | 0.476754   |
-| vy      | 0.804469   |
-
+state | RMSE
+--- | ---
+px  | 0.185496 
+py  | 0.190302   
+vx  | 0.476754   
+vy  | 0.804469   
 
 * obj_pose-laser-radar-synthetic-input.txt
-| state   | RMSE       |
-| ------- |------------|
-| px      | 0.0972414  |
-| py      | 0.0859948  |
-| vx      | 0.450821   |
-| vy      | 0.442915   |
+state | RMSE 
+--- | ---
+px  | 0.0972414  
+py  | 0.0859948 
+vx  | 0.450821 
+vy  | 0.442915
 
 
 ## Dependencies

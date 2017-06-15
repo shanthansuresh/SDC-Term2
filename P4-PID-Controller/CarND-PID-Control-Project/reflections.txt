@@ -1,0 +1,17 @@
+1. Describe the effect each of the P, I, D components had in your implementation.
+>> I started with just the P controller, as described by Sebastin in the lecture. 
+   With the P controller, the car was oscillating on the track and crashing after
+   a few seconds, before reaching the bridge. Then I introduced the D controller to 
+   reduce the oscillations, but it was still crashing. After this the I component 
+   was introduced and the car went further ahead. But the motion was not very smooth.
+
+2. Describe how the final hyperparameters were chosen.
+>> I started with initial controller gain values close to what had been taught in the lesson.
+   With this the car was able to complete the lap in the track. I decided to use the
+   twiddle algorithm to fine tune the gain values. I have implemented the algorithm taught
+   in the class. This algorithm runs once in 1000 steps and tries to minimize the cte.
+   After introducing the twiddle algorithm, I am able to see that the car drives very smoothly.
+
+Note: As can be observed in the demo video, during the initial steps the car oscillates
+      a lot, but after the twiddle algorithm kicks in, the car stabilizes in it's path.
+      After few iterations of the twiddle, the car runs smoothly.

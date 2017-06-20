@@ -117,7 +117,8 @@ int main() {
            * Note that the steering command angle(delta) and vehicl model angle
            * conversions are reverse. Hence the negative sign here.
            */
-          double latency = 0.1; // Set the expected latency here.
+          //double latency = 0.1; // Set the expected latency here.
+          double latency = 0.125; // Set the expected latency here.
           double delta = j[1]["steering_angle"];
           delta *= -1;
           double a = j[1]["throttle"];
@@ -157,7 +158,7 @@ int main() {
 
           /*
            * Fit a polynomial.
-           * We fit a first order polynomial as described in the lesson.
+           * We fit a third order polynomial as described in the lesson.
            * The STL vectors need to be converted to Eigen::VectorXd format
            * as polyfit() expects in Eigen format.
            */
@@ -169,7 +170,7 @@ int main() {
               ptsy_vehicle_[j] = ptsy_vehicle[j];
           }
 
-          auto coeffs = polyfit(ptsx_vehicle_, ptsy_vehicle_, 1);
+          auto coeffs = polyfit(ptsx_vehicle_, ptsy_vehicle_, 3);
 
           /*
            * The cross track error is calculated by evaluating at polynomial at x, f(x)

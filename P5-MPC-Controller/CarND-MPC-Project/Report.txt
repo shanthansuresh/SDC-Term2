@@ -28,9 +28,9 @@ This file describes the details of the MPC project.
 
    -- Cost function was based on the following components with weighing factors:
         cross track error (weight = 1)
-        orientation error (weight = 1)
-        velocity error (weight = 1)
-        steering value (weight = 1) 
+        orientation error (weight = 200)
+        velocity error (weight = 0.1)
+        steering value (weight = 20) 
         throttle value (weight = 1)
         Steering change rate (weight = 2000)
         Throttle change rate (weight = 1)         

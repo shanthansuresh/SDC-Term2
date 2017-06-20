@@ -61,7 +61,7 @@ class FG_eval {
     for (int i = 0; i < N; i++) {
       fg[0] += CppAD::pow(vars[cte_start + i] - ref_cte, 2);
       fg[0] += 200*CppAD::pow(vars[epsi_start + i] - ref_epsi, 2);
-      fg[0] += 0.1*CppAD::pow(vars[v_start + i] - ref_v, 2);
+      fg[0] += CppAD::pow(vars[v_start + i] - ref_v, 2);
     }
 
     // Minimize the use of actuators.
@@ -118,8 +118,9 @@ class FG_eval {
       AD<double> delta0 = vars[delta_start + i];
       AD<double> a0 = vars[a_start + i];
 
-      AD<double> f0 = coeffs[0] + coeffs[1] * x0;
-      AD<double> psides0 = CppAD::atan(coeffs[1]);
+      AD<double> f0 = coeffs[0] + coeffs[1] * x0 + (coeffs[2]*x0*x0)
+                      + (coeffs[3]*x0*x0*x0);
+      AD<double> psides0 = CppAD::atan(coeffs[1] + 2*x0*coeffs[2] + 3*coeffs[3]*x0*x0);
 
       // Here's `x` to get you started.
       // The idea here is to constraint this value to be 0.

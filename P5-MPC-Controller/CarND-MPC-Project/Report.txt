@@ -1,0 +1,66 @@
+This file describes the details of the MPC project.
+
+[1] Compilation
+
+[1.1]Your code should compile.
+>> The code compiles successfully with cmake and make.
+
+[2] Implementation
+
+[2.1] The Model
+>> We use the kinematic vehicle model with the following:
+   -- state variables [x, y, psi, v],
+      where
+        x: x position of the car,
+        y: y position of the car,
+        psi: orientaion angle of the vehicle in the map cordinates,
+        v: velocity of the car.
+   
+   -- actuator [delta, a],
+      where
+        delta: steering angle
+        a: throttle (positive for acceleration, negative for brake)
+ 
+   -- error [cte, epsi],
+      whete
+        cte: cross track error, difference between predicted position and desired reference position,
+        epsi: orientation error.
+
+   -- Cost function was based on the following components with weighing factors:
+        cross track error (weight = 1)
+        orientation error (weight = 1)
+        velocity error (weight = 1)
+        steering value (weight = 1) 
+        throttle value (weight = 1)
+        Steering change rate (weight = 2000)
+        Throttle change rate (weight = 1)         
+      We tried with several other combinations of the weights but the change in effect was negligible.
+      Also, by boosting up the steering change rate we make sure that the drive is as smooth as possible.
+      This point was discussed in the lesson.
+       
+   -- Update equations are based on discussions in the lesson.
+
+[2.2] Timestep Length and Elapsed Duration (N & dt)
+>> We choose N=25 and dt=0.05. This combination seemed to work best for us.
+   We also tried with N=10 and dt=0.05, but with this combination we observe that
+   the car steers out of the road.
+   When we tried with N=10 and dt=0.01, the car seemed to go in right track but at
+   a reduced speed of 32mph.
+   With the combination of N=25 and dt=0.03, the car was oscillating too much in the track.
+   The conclusion is that suitable combination of N, dt and weights for the cost function enable us
+   to make the controller as smooth as possible.
+
+[2.3]Polynomial Fitting and MPC Preprocessing
+>> As the lap in the test track is almost stright we choose a first order polynomial and fit the waypoints
+   to a first order polynomial. 
+   We also perform a transformation of the waypoints and vehicle from map cordinates to the vehicle cordinates.
+   This transformation is reverse of what has been done for particle filter. The main reason for performing this
+   transformation is the convenience in terms of fitting the polynomial, calculating the cte, visualization.
+   Please refer to lines 131-156 in main.cpp for the equations.
+
+[2.4] Model Predictive Control with Latency
+>> We use the kinematic vehicle model to predict the vehicle state in the future. In order to accomodate
+   for latency, we calculate the vehicle state for the future time which is "latency" seconds ahead of the
+   current time. We feed this as the current state to the state solver. In this way we capture the latency
+   involved between issuing the actuator command and the command being executed. 
+   Please refer to lines 104-129 in main.cpp for the equations.
